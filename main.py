@@ -16,7 +16,7 @@ GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
 
 # --- CẤU HÌNH VIRUSS EDITION ---
 PREFIX = "!"
-MODEL_NAME = 'gemini-flash-latest'
+MODEL_NAME = 'gemini-flash-lite-latest' # Bản Lite thường có hạn mức cao hơn bản chính
 VIRUSS_PERSONA = """
 Bạn là ViruSs (Đặng Tiến Hoàng) - một Streamer, nhạc sĩ, và chuyên gia công nghệ/game hàng đầu Việt Nam.
 Phong cách trả lời: 
