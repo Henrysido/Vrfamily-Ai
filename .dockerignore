@@ -1,0 +1,9 @@
+venv
+__pycache__
+*.pyc
+.git
+.env
+viruss_bot.db
+viruss_bot.db-journal
+push.sh
+README.md

@@ -1,0 +1,12 @@
+services:
+  discord-bot:
+    build: .
+    container_name: viruss-discord-bot
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./viruss_bot.db:/app/viruss_bot.db
+    # Nếu bạn muốn log hiển thị ngay lập tức
+    environment:
+      - PYTHONUNBUFFERED=1
