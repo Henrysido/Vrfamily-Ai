@@ -47,6 +47,41 @@ genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel(model_name=MODEL_NAME, system_instruction=VIRUSS_PERSONA)
 DB_FILE = "viruss_bot.db"
 
+import yt_dlp
+
+# --- CẤU HÌNH NHẠC ---
+YDL_OPTIONS = {
+    'format': 'm4a/bestaudio/best',
+    'noplaylist': True,
+    'quiet': True,
+    'no_warnings': True,
+    'default_search': 'auto',
+    'source_address': '0.0.0.0',
+    'nocheckcertificate': True,
+    'ignoreerrors': False,
+    'logtostderr': False,
+    'extract_flat': False,
+    'force_generic_extractor': False,
+    'youtube_include_dash_manifest': False,
+    'youtube_include_hls_manifest': False,
+    'cachedir': False,
+}
+
+# Thêm Header cực mạnh để giống trình duyệt thật
+YDL_OPTIONS['headers'] = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+    'Accept-Language': 'vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7',
+    'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache',
+}
+
+# Nếu có file cookies.txt, sử dụng để vượt qua Bot Detection của YouTube
+if os.path.exists('cookies.txt'):
+    YDL_OPTIONS['cookiefile'] = 'cookies.txt'
+
+FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
+
 class ViruSsBot(discord.Client):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -372,6 +407,49 @@ class ViruSsBot(discord.Client):
                     await message.reply("📴 **Chế độ Chat Tự Do:** TẮT! Quay lại dùng prefix hoặc @ nhé.")
             return
 
+        if content_lower.startswith(f"{PREFIX}join"):
+            if message.author.voice:
+                channel = message.author.voice.channel
+                await channel.connect()
+                await message.reply(f"🚀 Đã phi vào kênh **{channel.name}**. Sẵn sàng check nhạc!")
+            else: await message.reply("Vào voice trước đi em ơi! 😏")
+            return
+
+        if content_lower.startswith(f"{PREFIX}stop"):
+            if message.guild.voice_client:
+                await message.guild.voice_client.disconnect()
+                await message.reply("🔇 Nghỉ nghe, anh đi stream tiếp đây.")
+            else: await message.reply("Anh có đang ở trong voice đâu? 🤨")
+            return
+
+        if content_lower.startswith(f"{PREFIX}play"):
+            if not message.author.voice:
+                await message.reply("Vào voice trước đi rồi anh mới hát cho nghe được.")
+                return
+            
+            url = message.content.split(None, 1)[1] if len(message.content.split()) > 1 else None
+            if not url:
+                await message.reply(f"Sử dụng: `{PREFIX}play [link_youtube]`")
+                return
+
+            if not message.guild.voice_client:
+                await message.author.voice.channel.connect()
+
+            async with message.channel.typing():
+                try:
+                    with yt_dlp.YoutubeDL(YDL_OPTIONS) as ydl:
+                        info = ydl.extract_info(url, download=False)
+                        url2 = info['url']
+                        source = await discord.FFmpegOpusAudio.from_probe(url2, **FFMPEG_OPTIONS)
+                        
+                        if message.guild.voice_client.is_playing():
+                            message.guild.voice_client.stop()
+                        
+                        message.guild.voice_client.play(source)
+                        await message.reply(f"🎵 Đang quẩy bài: **{info['title']}** 🚀")
+                except Exception as e: await message.reply(f"❌ Lỗi nhạc nhẽo rồi: {str(e)}")
+            return
+
         if content_lower.startswith(f"{PREFIX}rank"):
             async with aiosqlite.connect(DB_FILE) as db:
                 async with db.execute("SELECT xp, level FROM users WHERE user_id = ?", (message.author.id,)) as cursor:
@@ -442,34 +520,6 @@ class ViruSsBot(discord.Client):
         embed.add_field(name="🏆 CỘNG ĐỒNG", value=f"`{PREFIX}rank`: Xem trình của mình\n`{PREFIX}top`: Bảng vàng anh em\n`{PREFIX}quiz`: Đố vui có thưởng\n`{PREFIX}clear`: Reset trí nhớ kênh", inline=False)
         embed.add_field(name="🤖 CHAT VỚI ANH HOÀNG", value=f"Gõ `{PREFIX}[nội dung]` hoặc Tag @ViruSs vào. Hỏi gì cũng được nhưng đừng hỏi bao giờ lấy vợ. 😏", inline=False)
         embed.add_field(name="🎵 ÂM NHẠC", value=f"`{PREFIX}join`: Vào voice\n`{PREFIX}play [link]`: Phát nhạc\n`{PREFIX}stop`: Dừng nhạc & Rời voice", inline=False)
-        if message.author.guild_permissions.administrator:
-            embed.add_field(name="📢 QUYỀN LỰC (Admin)", value=f"`{PREFIX}say`: Thông báo kiểu Chủ tịch\n`{PREFIX}scan`: Quét clone\n`{PREFIX}kick`/`{PREFIX}ban`: Tiễn khách", inline=False)
-        await message.reply(embed=embed)
-
-    async def handle_quiz(self, message):
-        async with message.channel.typing():
-            prompt = "Tạo 1 câu đố vui cực ngắn về Game hoặc Nhạc lý có 4 lựa chọn A, B, C, D. Liệt kê rõ ràng. Ghi 'Đáp án: [Chữ cái]' ở cuối."
-            response = await model.generate_content_async(prompt)
-            if "Đáp án:" in response.text:
-                parts = response.text.split("Đáp án:")
-                ans_match = re.search(r"([A-D])", parts[1])
-                if ans_match:
-                    ans = ans_match.group(1).upper()
-                    self.active_quizzes[message.channel.id] = ans
-                    await message.channel.send(f"🎮 **THỬ THÁCH VRFAMILY:**\n\n{parts[0].strip()}\n\n*(Gõ A, B, C hoặc D để trả lời!)* ⚡")
-                else:
-                    await message.channel.send("❌ AI lỗi khi tạo đáp án, thử lại sau nhé.")
-
-intents = discord.Intents.default()
-intents.message_content = True
-intents.members = True
-client = ViruSsBot(intents=intents)
-
-if __name__ == "__main__":
-    client.run(DISCORD_TOKEN)
-g, đừng có hỏi đi hỏi lại nhé em trai! 😂", color=0xffd700)
-        embed.add_field(name="🏆 CỘNG ĐỒNG", value=f"`{PREFIX}rank`: Xem trình của mình\n`{PREFIX}top`: Bảng vàng anh em\n`{PREFIX}quiz`: Đố vui có thưởng\n`{PREFIX}clear`: Reset trí nhớ kênh", inline=False)
-        embed.add_field(name="🤖 CHAT VỚI ANH HOÀNG", value=f"Gõ `{PREFIX}[nội dung]` hoặc Tag @ViruSs vào. Hỏi gì cũng được nhưng đừng hỏi bao giờ lấy vợ. 😏", inline=False)
         if message.author.guild_permissions.administrator:
             embed.add_field(name="📢 QUYỀN LỰC (Admin)", value=f"`{PREFIX}say`: Thông báo kiểu Chủ tịch\n`{PREFIX}scan`: Quét clone\n`{PREFIX}kick`/`{PREFIX}ban`: Tiễn khách", inline=False)
         await message.reply(embed=embed)

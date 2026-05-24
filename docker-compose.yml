@@ -7,6 +7,7 @@ services:
       - .env
     volumes:
       - ./viruss_bot.db:/app/viruss_bot.db
+      - ./cookies.txt:/app/cookies.txt
     # Nếu bạn muốn log hiển thị ngay lập tức
     environment:
       - PYTHONUNBUFFERED=1
