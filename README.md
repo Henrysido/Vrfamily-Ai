@@ -1,91 +1,67 @@
-# 🤖 ViruSs Bot - AI Edition 2026
+# 🚀 ViruSs AI Bot - Vrfamily Edition 2026
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.9+-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python Version">
-  <img src="https://img.shields.io/badge/Discord.py-2.3+-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord.py">
-  <img src="https://img.shields.io/badge/Gemini_AI-Flash--Lite-orange?style=for-the-badge&logo=google-gemini&logoColor=white" alt="Gemini AI">
-</p>
+Chào mừng bạn đến với phiên bản AI của **ViruSs (Đặng Tiến Hoàng)**. Đây là một Discord Bot được tích hợp trí tuệ nhân tạo Gemini, mang phong cách chat thẳng thắn, thông minh và cực kỳ "human".
 
----
+## ✨ Tính năng nổi bật
 
-## 🌟 Tổng Quan
-**ViruSs Bot** là một trợ lý Discord thông minh dựa trên mô hình **Gemini AI (2026 Edition)**. Được tinh chỉnh với Persona của **ViruSs (Đặng Tiến Hoàng)**, bot mang đến phong cách trò chuyện thẳng thắn, thông minh và cực kỳ "đời".
+### 🧠 Trí tuệ nhân tạo (Gemini AI)
+- **Chat tự nhiên:** Phong cách chat của "anh Hoàng" năm 2026, sử dụng từ lóng, gần gũi, không rập khuôn máy móc.
+- **Multimodal:** Bot có thể "nhìn" ảnh bạn gửi và đưa ra nhận xét, đánh giá hoặc tán gẫu về nội dung ảnh.
+- **Phòng thủ AI:** Tự động phủ nhận mình là bot khi bị trêu chọc, khẳng định là "hàng real".
 
-> "Anh em Vrfamily đâu rồi? Chat nhẹ nhàng, đẳng cấp chuyên gia nhé! 💎"
+### 🎵 Âm nhạc (Music Bot)
+- Phát nhạc chất lượng cao từ YouTube qua link URL.
+- Các lệnh điều khiển Voice đơn giản, mượt mà.
 
-## ✨ Tính Năng Nổi Bật
+### 🛡️ Quản trị & Rà soát (Moderation)
+- **Quét Clone/Ghost:** Tự động rà soát những thành viên không cài avatar và lâu không tương tác.
+- **Báo cáo định kỳ:** Tự động gửi báo cáo rà soát vào kênh Admin mỗi 24h.
+- **Lệnh quản trị:** Kick, Ban, Unban nhanh chóng với UI Embed chuyên nghiệp.
 
-### 🧠 Trí Tuệ Nhân Tạo (Gemini Flash Lite)
-- **Chat thông minh:** Trả lời súc tích, hiểu ngữ cảnh và ngôn ngữ đời thường.
-- **Tối ưu hóa Quota:** Sử dụng model Lite để đảm bảo bot luôn trực tuyến ngay cả khi lượng chat lớn.
-- **Hỗ trợ DM:** Chat riêng tư 1-1 với bot.
+### 🏆 Cộng đồng & Mini-game
+- **Hệ thống Level/XP:** Tích lũy XP qua việc chat, thăng cấp và nhận thông báo chúc mừng.
+- **Quiz vui:** Các câu đố về Game và Nhạc lý để anh em thử tài.
+- **Bảng vàng:** Xem top những người hoạt động tích cực nhất Vrfamily.
 
-### 🏢 Chế Độ Phòng AI (AI Channel) - *Mới!*
-- Biến bất kỳ kênh nào thành phòng chat AI tự động.
-- Không cần dùng dấu nhắc lệnh hay Tag tên bot.
-- Tự động hóa hoàn toàn cuộc hội thoại trong kênh được định định.
+## 📜 Danh sách lệnh (Prefix: `.`)
 
-### 🏆 Hệ Thống Cộng Đồng & Game
-- **Level & XP:** Tích lũy kinh nghiệm khi trò chuyện.
-- **Leaderboard:** Bảng xếp hạng đẳng cấp Vrfamily.
-- **Quiz Game:** Thử thách kiến thức về Game và Nhạc lý.
+### 🏆 Cộng đồng
+- `.rank`: Xem cấp độ và XP của bản thân.
+- `.top`: Xem bảng xếp hạng 10 người đỉnh nhất.
+- `.quiz`: Trả lời câu đố vui để nhận thêm XP.
+- `.clear`: Reset trí nhớ của AI tại kênh hiện tại.
 
----
+### 🎵 Âm nhạc
+- `.join`: Gọi bot vào kênh Voice bạn đang đứng.
+- `.play [link]`: Phát nhạc từ YouTube.
+- `.stop`: Dừng nhạc và cho bot rời kênh Voice.
 
-## 🛠️ Hướng Dẫn Cài Đặt
+### 🛡️ Quản trị (Chỉ dành cho Admin)
+- `.scan [số_ngày]`: Quét thành viên không avatar & inactive (Mặc định 30 ngày).
+- `.setscanchannel`: Cài đặt kênh nhận báo cáo quét tự động hàng ngày.
+- `.kick @user [lý do]`: Trục xuất thành viên.
+- `.ban @user [lý do]`: Cấm vĩnh viễn thành viên.
+- `.unban [ID/Name]`: Gỡ lệnh cấm.
+- `.say [#kênh] [ý tưởng]`: Bot sẽ đóng vai ViruSs để viết thông báo (3 phiên bản khác nhau).
+- `.setlevelchannel`: Chọn kênh thông báo khi có người lên cấp.
+- `.setaichannel`: Bật chế độ chat AI tự do (không cần prefix/tag).
 
-### 1. Yêu Cầu Hệ Thống
-- Python 3.9 trở lên.
-- Một Discord Bot Token ([Discord Developer Portal](https://discord.com/developers/applications)).
-- Một Gemini API Key ([Google AI Studio](https://aistudio.google.com/)).
+## ⚙️ Cài đặt & Triển khai
 
-### 2. Triển Khai Nhanh
-```bash
-# Clone source code
-git clone https://github.com/Henrysido/Vrfamily-Ai.git
-cd Vrfamily-Ai
+### 1. Yêu cầu hệ thống
+- Docker & Docker Compose.
+- **Discord Bot Intent:** Bắt buộc phải bật **Server Members Intent** trong Discord Developer Portal để tính năng `.scan` hoạt động.
 
-# Tạo môi trường ảo và cài đặt thư viện
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-### 3. Cấu Hình
-Tạo file `.env` và điền thông tin của bạn:
+### 2. Biến môi trường (`.env`)
 ```env
-DISCORD_TOKEN=your_discord_bot_token_here
-GEMINI_API_KEY=your_gemini_api_key_here
+DISCORD_TOKEN=Token_của_bạn
+GEMINI_API_KEY=Key_Gemini_của_bạn
 ```
 
----
-
-## 🎮 Danh Sách Lệnh (Prefix: `.`)
-
-| Lệnh | Mô tả | Quyền |
-| :--- | :--- | :--- |
-| `.help` | Hiển thị cẩm năng sử dụng | Mọi người |
-| `.rank` | Xem cấp độ và XP cá nhân | Mọi người |
-| `.top` | Bảng xếp hạng cao thủ Vrfamily | Mọi người |
-| `.quiz` | Thử thách câu đố nhanh | Mọi người |
-| `.setaichannel` | Bật chế độ chat tự do cho kênh | **Admin** |
-| `.removeaichannel` | Tắt chế độ chat tự do | **Admin** |
-| `.say` | Nhờ bot soạn thông báo bằng AI | **Admin** |
-| `.clear` | Reset trí nhớ của AI tại kênh | Mọi người |
-
----
-
-## 🚀 Phát Triển (Docker)
-Dự án đã hỗ trợ Docker để triển khai ổn định trên Server/VPS:
+### 3. Chạy với Docker
 ```bash
-docker-compose up -d --build
+sudo docker-compose up --build -d
 ```
 
-## 🤝 Đóng Góp
-Nếu bạn có ý tưởng hay muốn cải thiện Persona của "anh Hoàng", hãy tạo **Pull Request** hoặc gửi **Issue**. Rất hoan nghênh anh em chung tay!
-
 ---
-
-<p align="center">
-  Built with ❤️ for <b>Vrfamily</b>
-</p>
+*Phát triển bởi Vrfamily Team. Hãy quẩy nhiệt tình cùng anh Hoàng nhé!* 🚀💎😏
