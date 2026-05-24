@@ -1,67 +1,54 @@
-# 🚀 ViruSs AI Bot - Vrfamily Edition 2026
+# 🤖 ViruSs Discord Bot - Edition 2026
 
-Chào mừng bạn đến với phiên bản AI của **ViruSs (Đặng Tiến Hoàng)**. Đây là một Discord Bot được tích hợp trí tuệ nhân tạo Gemini, mang phong cách chat thẳng thắn, thông minh và cực kỳ "human".
+Chào mừng anh em đến với bản nâng cấp tối thượng của ViruSs Bot! Phiên bản này được thiết kế dành riêng cho cộng đồng Vrfamily với phong cách chat cực "real" và hệ thống giải trí đỉnh cao.
 
 ## ✨ Tính năng nổi bật
 
-### 🧠 Trí tuệ nhân tạo (Gemini AI)
-- **Chat tự nhiên:** Phong cách chat của "anh Hoàng" năm 2026, sử dụng từ lóng, gần gũi, không rập khuôn máy móc.
-- **Multimodal:** Bot có thể "nhìn" ảnh bạn gửi và đưa ra nhận xét, đánh giá hoặc tán gẫu về nội dung ảnh.
-- **Phòng thủ AI:** Tự động phủ nhận mình là bot khi bị trêu chọc, khẳng định là "hàng real".
+### 🎵 Âm nhạc "Pro"
+- **Tìm kiếm thông minh:** Gõ tên bài hát hoặc lời bài hát để tìm kiếm. Không cần dán link phiền phức.
+- **Hệ thống Equalizer (EQ):** Tùy chỉnh dòng nhạc ngay trên Discord với các chế độ: Jazz, Pop, Rock, Classic.
+- **Bass Boost:** Chế độ siêu trầm cực mạnh dành cho anh em thích "quẩy".
+- **Giao diện tương tác:** Điều khiển nhạc qua các nút bấm (Pause, Resume, Stop) và Menu thả xuống cực chuyên nghiệp.
+- **Chống nhiễu:** Tự động lấy lại link khi stream bị lỗi hoặc hết hạn.
 
-### 🎵 Âm nhạc (Music Bot)
-- Phát nhạc chất lượng cao từ YouTube qua link URL.
-- Các lệnh điều khiển Voice đơn giản, mượt mà.
+### 🤖 AI Chat (Bản sao ViruSs)
+- **Persona 2026:** Chat cực kỳ tự nhiên, sử dụng ngôn ngữ đời thường của anh Hoàng, tuyệt đối không lộ bản chất AI.
+- **Thị giác máy tính:** Gửi ảnh cho bot và nó sẽ nhận xét/bình luận theo phong cách ViruSs.
+- **Kênh Chat Tự Do:** Cấu hình kênh riêng để chat không cần tag hay dùng prefix.
 
-### 🛡️ Quản trị & Rà soát (Moderation)
-- **Quét Clone/Ghost:** Tự động rà soát những thành viên không cài avatar và lâu không tương tác.
-- **Báo cáo định kỳ:** Tự động gửi báo cáo rà soát vào kênh Admin mỗi 24h.
-- **Lệnh quản trị:** Kick, Ban, Unban nhanh chóng với UI Embed chuyên nghiệp.
+### 📈 Hệ thống Cộng đồng
+- **Cày Level & XP:** Chat càng nhiều cấp càng cao. Kiểm tra trình độ qua lệnh `.rank` và `.top`.
+- **Đố vui (Quiz):** Các câu đố về game và nhạc lý với phần thưởng XP hấp dẫn.
+- **Rà soát Server (Admin):** Tự động quét và báo cáo những thành viên không cài ảnh đại diện hoặc lâu ngày không tương tác (Ghost members).
 
-### 🏆 Cộng đồng & Mini-game
-- **Hệ thống Level/XP:** Tích lũy XP qua việc chat, thăng cấp và nhận thông báo chúc mừng.
-- **Quiz vui:** Các câu đố về Game và Nhạc lý để anh em thử tài.
-- **Bảng vàng:** Xem top những người hoạt động tích cực nhất Vrfamily.
+## 🛠️ Lệnh Bot (Prefix: `.`)
 
-## 📜 Danh sách lệnh (Prefix: `.`)
+| Lệnh | Mô tả |
+| :--- | :--- |
+| `.play [tên/link]` | Phát nhạc với Menu chọn bài thông minh |
+| `.stop` | Dừng nhạc và rời kênh thoại |
+| `.rank` | Xem hồ sơ XP và Cấp độ cá nhân |
+| `.top` | Bảng vàng 10 anh em đỉnh nhất server |
+| `.quiz` | Thử thách kiến thức, kiếm thêm XP |
+| `.clear` | Reset "trí nhớ" của AI tại kênh hiện tại |
+| `.help` | Hiển thị bảng hướng dẫn này |
 
-### 🏆 Cộng đồng
-- `.rank`: Xem cấp độ và XP của bản thân.
-- `.top`: Xem bảng xếp hạng 10 người đỉnh nhất.
-- `.quiz`: Trả lời câu đố vui để nhận thêm XP.
-- `.clear`: Reset trí nhớ của AI tại kênh hiện tại.
-
-### 🎵 Âm nhạc
-- `.join`: Gọi bot vào kênh Voice bạn đang đứng.
-- `.play [link]`: Phát nhạc từ YouTube.
-- `.stop`: Dừng nhạc và cho bot rời kênh Voice.
-
-### 🛡️ Quản trị (Chỉ dành cho Admin)
-- `.scan [số_ngày]`: Quét thành viên không avatar & inactive (Mặc định 30 ngày).
-- `.setscanchannel`: Cài đặt kênh nhận báo cáo quét tự động hàng ngày.
-- `.kick @user [lý do]`: Trục xuất thành viên.
-- `.ban @user [lý do]`: Cấm vĩnh viễn thành viên.
-- `.unban [ID/Name]`: Gỡ lệnh cấm.
-- `.say [#kênh] [ý tưởng]`: Bot sẽ đóng vai ViruSs để viết thông báo (3 phiên bản khác nhau).
+**Lệnh Admin:**
 - `.setlevelchannel`: Chọn kênh thông báo khi có người lên cấp.
-- `.setaichannel`: Bật chế độ chat AI tự do (không cần prefix/tag).
+- `.setaichannel`: Biến kênh hiện tại thành phòng chat AI tự động.
+- `.scan [số ngày]`: Quét thành viên ghost (mặc định 30 ngày).
+- `.say [nội dung]`: Thông báo kiểu Chủ tịch (AI sẽ viết lại 3 bản cho bạn chọn).
 
-## ⚙️ Cài đặt & Triển khai
+## 🚀 Cài đặt & Chạy Bot
 
-### 1. Yêu cầu hệ thống
-- Docker & Docker Compose.
-- **Discord Bot Intent:** Bắt buộc phải bật **Server Members Intent** trong Discord Developer Portal để tính năng `.scan` hoạt động.
+Bot được đóng gói hoàn toàn trong **Docker** để đảm bảo tính ổn định:
 
-### 2. Biến môi trường (`.env`)
-```env
-DISCORD_TOKEN=Token_của_bạn
-GEMINI_API_KEY=Key_Gemini_của_bạn
-```
-
-### 3. Chạy với Docker
-```bash
-sudo docker-compose up --build -d
-```
+1. **Chuẩn bị:** Copy file `.env.example` thành `.env` và điền Token.
+2. **Khởi động:** 
+   ```bash
+   docker compose up -d --build
+   ```
+3. **Cập nhật:** Chạy file `push.sh` để đẩy code lên Git nếu cần.
 
 ---
-*Phát triển bởi Vrfamily Team. Hãy quẩy nhiệt tình cùng anh Hoàng nhé!* 🚀💎😏
+*Phát triển bởi Vrfamily Team. Hãy tận hưởng những giây phút giải trí cùng anh Hoàng!* 🚀🔥
